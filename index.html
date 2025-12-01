@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Raj Kumar Singh – Portfolio</title>
+
+    <!-- React + ReactDOM CDN -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+      :root {
+        --bg: #0f172a;
+        --card: #1e293b;
+        --text: #e2e8f0;
+        --accent: #6ee7b7;
+        --muted: #94a3b8;
+      }
+
+      [data-theme="light"] {
+        --bg: #ffffff;
+        --card: #f1f5f9;
+        --text: #1e293b;
+        --accent: #0ea5e9;
+        --muted: #475569;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: system-ui, sans-serif;
+        transition: background 0.3s, color 0.3s;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: auto;
+        padding: 40px 20px;
+      }
+
+      h1 {
+        font-size: 2.7rem;
+        color: var(--accent);
+        margin-bottom: 0;
+      }
+
+      h2 {
+        margin-top: 40px;
+        color: var(--accent);
+        font-size: 1.8rem;
+      }
+
+      .section {
+        background: var(--card);
+        padding: 20px;
+        border-radius: 12px;
+        margin-top: 20px;
+        box-shadow: 0 0 10px #0003;
+        animation: fadeIn 0.6s ease;
+      }
+
+      @keyframes fadeIn {
+        from {opacity: 0; transform: translateY(10px);}
+        to {opacity: 1; transform: translateY(0);}
+      }
+
+      .skill-badge {
+        display: inline-block;
+        background: #0f172a66;
+        padding: 8px 14px;
+        border-radius: 20px;
+        margin: 6px;
+        color: var(--accent);
+        font-size: 0.9rem;
+      }
+
+      .photo {
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        border: 3px solid var(--accent);
+        object-fit: cover;
+        margin-top: 20px;
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .btn {
+        padding: 10px 18px;
+        border-radius: 8px;
+        background: var(--accent);
+        color: black;
+        display: inline-block;
+        font-weight: 600;
+        margin-top: 12px;
+      }
+
+      .btn:hover {
+        opacity: 0.8;
+      }
+
+      .theme-toggle {
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        padding: 8px 12px;
+        border-radius: 8px;
+        background: var(--card);
+        cursor: pointer;
+        color: var(--accent);
+        font-size: 14px;
+      }
+
+      .project-card {
+        background: #0f172a33;
+        padding: 16px;
+        border-radius: 10px;
+        margin-bottom: 12px;
+      }
+
+      .repo-card {
+        background: #0f172a33;
+        padding: 16px;
+        border-radius: 10px;
+        margin-bottom: 12px;
+      }
+
+      .ascii-graph {
+        font-family: monospace;
+        white-space: pre;
+        padding: 10px;
+        background: #00000033;
+        border-radius: 10px;
+        margin-top: 10px;
+      }
+
+      /* Typewriter Animation */
+      .typewriter {
+        overflow: hidden;
+        border-right: 2px solid var(--accent);
+        white-space: nowrap;
+        animation: typing 3s steps(40), blink 0.7s infinite;
+        width: fit-content;
+        font-size: 1.2rem;
+        margin-top: 6px;
+      }
+      @keyframes typing {
+        from { width: 0; }
+        to { width: 100%; }
+      }
+      @keyframes blink {
+        50% { border-color: transparent; }
+      }
+    </style>
+  </head>
+
+  <body data-theme="dark">
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const App = () => {
+        const [theme, setTheme] = React.useState("dark");
+
+        const toggleTheme = () => {
+          const newTheme = theme === "dark" ? "light" : "dark";
+          setTheme(newTheme);
+          document.body.setAttribute("data-theme", newTheme);
+        };
+
+        return (
+          <div className="container">
+            <div className="theme-toggle" onClick={toggleTheme}>
+              {theme === "dark" ? "☀ Light Mode" : "🌙 Dark Mode"}
+            </div>
+
+            <img
+              src="https://i.pravatar.cc/300"
+              alt="Profile Photo"
+              className="photo"
+            />
+
+            <h1>Raj Kumar Singh</h1>
+
+            <div className="typewriter">
+              Lead Mobile Engineer • Android Expert • DSA Specialist
+            </div>
+
+            <a className="btn" href="resume.pdf" download>⬇ Download Resume</a>
+
+            {/* Contact */}
+            <div className="section">
+              <h2>Contact</h2>
+              <p>📞 +91-8431233557 | 9895977503</p>
+              <p>
+                📧 <a href="mailto:rksinghj4@gmail.com">rksinghj4@gmail.com</a>
+              </p>
+              <p>
+                🌐 GitHub | LinkedIn
+              </p>
+            </div>
+
+            {/* Recruiter CTA */}
+            <div className="section">
+              <h2>For Recruiters</h2>
+              <p>I build high-performance, scalable Android apps that deliver measurable results.</p>
+              <p>Let’s talk if you want:</p>
+              <ul>
+                <li>🚀 Faster, more stable apps</li>
+                <li>📊 Performance improvements backed by data</li>
+                <li>🛠 Clean architecture & long-term maintainability</li>
+                <li>🤝 A senior engineer who works well with product & design</li>
+              </ul>
+              <a className="btn" href="mailto:rksinghj4@gmail.com">Contact Me</a>
+            </div>
+
+            {/* Skills */}
+            <div className="section">
+              <h2>Skills</h2>
+              {[
+                "Kotlin","Java","Jetpack Compose","MVVM","Clean Architecture",
+                "Room","Retrofit","Hilt","Coroutines","KSP","GraphQL",
+                "Android SDK","Modularization","CI/CD","Unit Testing","DSA",
+              ].map((s) => (
+                <span key={s} className="skill-badge">{s}</span>
+              ))}
+            </div>
+
+            {/* Projects */}
+            <div className="section">
+              <h2>Projects</h2>
+
+              <div className="project-card">
+                <h3>Care.com Provider App</h3>
+                <p>⚡ Improved app performance by 45%</p>
+                <p>💳 Built payment flows increasing renewals by 33%</p>
+              </div>
+
+              <div className="project-card">
+                <h3>Modular Android Architecture</h3>
+                <p>📦 Reduced build time by 55% & memory footprint by 40%</p>
+              </div>
+
+              <div className="project-card">
+                <h3>Reusable UI Framework (PatternLib)</h3>
+                <p>🚀 Improved development speed by 30%</p>
+              </div>
+            </div>
+
+            {/* GitHub Repos Showcase */}
+            <div className="section">
+              <h2>GitHub Highlights</h2>
+
+              <div className="repo-card">
+                <h3>FlowTracer SDK</h3>
+                <p>Debug & analyze Kotlin Flows visually.</p>
+              </div>
+
+              <div className="repo-card">
+                <h3>Android Performance Toolkit</h3>
+                <p>Tools for memory profiling, StrictMode rules, and performance boosts.</p>
+              </div>
+            </div>
+
+            {/* Tech Stack Graph */}
+            <div className="section">
+              <h2>Tech Stack Strength</h2>
+              <div className="ascii-graph">
+{`Kotlin        ████████████████████  95%
+Java          ████████████████      85%
+Compose       ███████████████       80%
+MVVM          █████████████████     90%
+DSA           ███████████████       82%
+Architecture  ████████████████████  95%`}
+              </div>
+            </div>
+          </div>
+        );
+      };
+
+      ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+    </script>
+  </body>
+</html>
